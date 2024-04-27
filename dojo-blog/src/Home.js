@@ -3,11 +3,7 @@ import BlogList from "./BlogList";
 
 const Home = () => {
   const [blogs, setBlog] = useState(null);
-
-  const handleDelete = (id) => {
-    const newBlogs = blogs.filter((blog) => blog.id !== id);
-    setBlog(newBlogs);
-  };
+  const [isPending, setIsPending] = useState(true);
 
   //lets fetch data from a json server
   useEffect(() => {
@@ -18,13 +14,15 @@ const Home = () => {
       })
       .then((data) => {
         setBlog(data);
+        setIsPending(false);
       });
   }, []);
 
   return (
     <div className="home">
+      {isPending && <div>Loading...</div>}
       {blogs && (
-        <BlogList blogs={blogs} handleDelete={handleDelete} title="Blogs" />
+        <BlogList blogs={blogs} title="Blogs" />
         //outputs blog only if has been fully loaded to prevent mapping a null value
       )}
     </div>
