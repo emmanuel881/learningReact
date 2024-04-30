@@ -1,6 +1,6 @@
 # Creating my first react project
 
-its a blog application allowing one to edit blogs
+it's an application allowing with  to post and edit blogs functionalities 
 
 ## project image
 ![](image.png)
